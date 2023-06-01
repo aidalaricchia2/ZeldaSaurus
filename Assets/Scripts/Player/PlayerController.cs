@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] private float speed;
-
+    [SerializeField] private SpriteRenderer spriterender;
     // Start is called before the first frame update
     private Rigidbody2D rig;
     private void Awake(){
@@ -17,6 +17,11 @@ public class PlayerController : MonoBehaviour
         float horizontal =Input.GetAxis("Horizontal");
         float vertical =Input.GetAxis("Vertical");
         rig.velocity= new Vector2(horizontal,vertical)*speed;
+        if (horizontal < 0){
+            spriterender.flipX= true;}
+        else if(horizontal > 0){
+            spriterender.flipX= false;
+        }
         
     }
     void Start()
